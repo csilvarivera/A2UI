@@ -1,0 +1,88 @@
+{
+  "assets": {
+    "Roof-top Unit 4": {
+      "model": "Trane Voyager HVAC",
+      "protocol": [
+        "Check Fan Belt tension and wear (B-505)",
+        "Verify Freon levels and pressure",
+        "Replace High-Efficiency Filter (F-101)",
+        "Inspect Compressor Service Valves"
+      ]
+    },
+    "Commercial Boiler Unit 1": {
+      "model": "Lochinvar Knight XL",
+      "protocol": [
+        "Inspect Boiler Ignitor Rod (I-909)",
+        "Check Flame Sensor signal (S-202)",
+        "Perform Combustion Analysis",
+        "Replace Heat Exchanger Gaskets (G-303)"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "Standard Brass Valve",
+      "id": "V-442",
+      "description": "Standard service valve for Trane Voyager units.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/brass_valve.png",
+      "model": "Trane Voyager HVAC"
+    },
+    {
+      "name": "High-Pressure Steel Valve",
+      "id": "V-991",
+      "description": "Industrial grade high-pressure valve.",
+      "stock": "Order Required",
+      "imageUrl": "/static/steel_valve.png",
+      "model": "Trane Voyager HVAC"
+    },
+    {
+      "name": "Quick-Connect Valve",
+      "id": "V-202",
+      "description": "Easy-install quick-connect valve.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/quick_valve.png",
+      "model": "Trane Voyager HVAC"
+    },
+    {
+      "name": "High-Efficiency HVAC Filter",
+      "id": "F-101",
+      "description": "Pleated HEPA filter for commercial HVAC units.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/hvac_filter.png",
+      "model": "Trane Voyager HVAC"
+    },
+    {
+      "name": "Heavy-Duty Fan Belt",
+      "id": "B-505",
+      "description": "Industrial grade V-belt for fan motors.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/fan_belt.png",
+      "model": "Trane Voyager HVAC"
+    },
+    {
+      "name": "Boiler Ignitor Rod",
+      "id": "I-909",
+      "description": "Ceramic-insulated ignitor for Lochinvar boilers.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/boiler_ignitor.png",
+      "model": "Lochinvar Knight XL"
+    },
+    {
+      "name": "Boiler Flame Sensor",
+      "id": "S-202",
+      "description": "Flame detection sensor for industrial boilers.",
+      "stock": "Order Required",
+      "imageUrl": "/static/flame_sensor.png",
+      "model": "Lochinvar Knight XL"
+    },
+    {
+      "name": "Boiler Gasket Kit",
+      "id": "G-303",
+      "description": "Full gasket replacement set for Knight XL heat exchangers.",
+      "stock": "In Stock in Van",
+      "imageUrl": "/static/gasket_kit.png",
+      "model": "Lochinvar Knight XL"
+    }
+  ]
+}
