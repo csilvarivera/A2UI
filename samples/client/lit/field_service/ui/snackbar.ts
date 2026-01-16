@@ -19,7 +19,7 @@ import { SnackbarMessage, SnackbarUUID, SnackType } from "../types/types";
 import { repeat } from "lit/directives/repeat.js";
 import { SnackbarActionEvent } from "../events/events";
 import { classMap } from "lit/directives/class-map.js";
-import { v0_8 } from "@a2ui/lit-field-service";
+import { v0_8 } from "@a2ui/lit";
 
 const DEFAULT_TIMEOUT = 8000;
 

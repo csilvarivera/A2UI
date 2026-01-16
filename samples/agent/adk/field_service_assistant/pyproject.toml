@@ -9,7 +9,6 @@ dependencies = [
     "google-adk>=0.1.0",
     "google-genai>=1.0.0",
     "python-dotenv>=1.1.0",
-    "litellm",
     "jsonschema>=4.0.0",
     "a2a-sdk>=0.3.0",
     "starlette>=0.36.0",

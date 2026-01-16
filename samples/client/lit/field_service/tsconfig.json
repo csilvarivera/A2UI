@@ -34,7 +34,7 @@
   },
   "references": [
     {
-      "path": "../../../../renderers/lit_field_service"
+      "path": "../../../../renderers/lit"
     }
   ]
 }

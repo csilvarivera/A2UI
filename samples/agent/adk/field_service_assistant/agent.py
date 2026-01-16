@@ -22,7 +22,7 @@ import jsonschema
 from google.adk.agents.llm_agent import LlmAgent
 from google.adk.artifacts import InMemoryArtifactService
 from google.adk.memory.in_memory_memory_service import InMemoryMemoryService
-from google.adk.models.lite_llm import LiteLlm
+from google.adk.models.google_llm import Gemini
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
@@ -93,7 +93,7 @@ class FieldServiceAgent:
         return "Retrieving job details and protocols..."
 
     def _build_agent(self, use_ui: bool) -> LlmAgent:
-        LITELLM_MODEL = os.getenv("LITELLM_MODEL", "gemini/gemini-3-flash-preview")
+        GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3-flash-preview")
 
         if use_ui:
             instruction = AGENT_INSTRUCTION + get_ui_prompt(
@@ -103,7 +103,7 @@ class FieldServiceAgent:
             instruction = get_text_prompt()
 
         return LlmAgent(
-            model=LiteLlm(model=LITELLM_MODEL),
+            model=Gemini(model=GEMINI_MODEL),
             name="field_service_agent",
             description="An assistant for HVAC technicians on-site.",
             instruction=instruction,

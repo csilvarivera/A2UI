@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-import { v0_8 } from "@a2ui/lit-field-service";
+import { v0_8 } from "@a2ui/lit";
 
 /**
  * Configuration interface for the Universal App Shell.

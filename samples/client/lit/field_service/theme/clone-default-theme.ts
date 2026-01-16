@@ -15,7 +15,7 @@
  */
 
 import { theme } from "./default-theme.js";
-import { v0_8 } from "@a2ui/lit-field-service";
+import { v0_8 } from "@a2ui/lit";
 
 export function cloneDefaultTheme(): v0_8.Types.Theme {
   return structuredClone(theme);

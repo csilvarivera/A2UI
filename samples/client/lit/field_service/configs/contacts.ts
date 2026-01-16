@@ -16,7 +16,7 @@
 
 import { cloneDefaultTheme } from "../theme/clone-default-theme.js";
 import { AppConfig } from "./types.js";
-import { v0_8 } from "@a2ui/lit-field-service";
+import { v0_8 } from "@a2ui/lit";
 
 /** Elements */
 
