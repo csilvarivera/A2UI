@@ -9,9 +9,6 @@ This sample demonstrates a Google ADK-based agent designed for HVAC technicians 
 3.  **Job Close-out:** Once repaired, the technician wraps up the job. The agent pre-fills a `JobSummaryForm` based on the conversation and prompts for completion.
 
 ## Running the Sample
-
-# Running the Sample
-
 1. Navigate to the samples directory:
 
    ```bash
