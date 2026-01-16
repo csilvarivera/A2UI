@@ -16,7 +16,7 @@
 
 import assert from "node:assert";
 import { describe, it, beforeEach } from "node:test";
-import { v0_8 } from "@a2ui/lit";
+import * as v0_8 from "./core.js";
 import { DataMap, DataValue } from "./types/types";
 
 // Helper function to strip reactivity for clean comparisons.
@@ -31,12 +31,13 @@ const toPlainObject = (value: unknown): ReturnType<typeof JSON.parse> => {
   }
   if (
     v0_8.Data.Guards.isObject(value) &&
-    value.constructor.name === "SignalObject"
+    (value as { constructor: { name: string } }).constructor.name === "SignalObject"
   ) {
     const obj: Record<string, unknown> = {};
-    for (const key in value) {
-      if (Object.prototype.hasOwnProperty.call(value, key)) {
-        obj[key] = toPlainObject(value[key]);
+    const valObj = value as Record<string, unknown>;
+    for (const key in valObj) {
+      if (Object.prototype.hasOwnProperty.call(valObj, key)) {
+        obj[key] = toPlainObject(valObj[key]);
       }
     }
     return obj;

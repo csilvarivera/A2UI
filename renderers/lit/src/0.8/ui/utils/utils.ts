@@ -15,8 +15,39 @@
  */
 
 import { A2uiMessageProcessor } from "../../data/model-processor.js";
-import { NumberValue, type StringValue } from "../../types/primitives.js";
+import { NumberValue, type StringValue, type BooleanValue } from "../../types/primitives.js";
 import { type AnyComponentNode } from "../../types/types.js";
+
+
+
+export function extractBooleanValue(
+  val: BooleanValue | null,
+  component: AnyComponentNode | null,
+  processor: A2uiMessageProcessor | null,
+  surfaceId: string | null
+): boolean {
+  if (val !== null && typeof val === "object") {
+    if ("literalBoolean" in val) {
+      return val.literalBoolean ?? false;
+    } else if ("literal" in val && val.literal !== undefined) {
+      return !!val.literal;
+    } else if (val && "path" in val && val.path) {
+      if (!processor || !component) {
+        return false;
+      }
+
+      const booleanValue = processor.getData(
+        component,
+        val.path,
+        surfaceId ?? A2uiMessageProcessor.DEFAULT_SURFACE_ID
+      );
+
+      return !!booleanValue;
+    }
+  }
+
+  return false;
+}
 
 export function extractStringValue(
   val: StringValue | null,

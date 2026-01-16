@@ -22,6 +22,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { A2uiMessageProcessor } from "../data/model-processor.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { structuralStyles } from "./styles.js";
+import { extractStringValue, extractBooleanValue } from "./utils/utils.js";
 
 @customElement("a2ui-checkbox")
 export class Checkbox extends Root {
@@ -78,62 +79,35 @@ export class Checkbox extends Root {
     );
   }
 
-  #renderField(value: boolean | number) {
+  #renderField(value: boolean) {
     return html` <section
-      class=${classMap(this.theme.components.CheckBox.container)}
-      style=${this.theme.additionalStyles?.CheckBox
+        class=${classMap(this.theme.components.CheckBox.container)}
+        style=${this.theme.additionalStyles?.CheckBox
         ? styleMap(this.theme.additionalStyles?.CheckBox)
         : nothing}
-    >
-      <input
-        class=${classMap(this.theme.components.CheckBox.element)}
-        autocomplete="off"
-        @input=${(evt: Event) => {
-          if (!(evt.target instanceof HTMLInputElement)) {
-            return;
-          }
-
-          this.#setBoundValue(evt.target.value);
-        }}
-        id="data"
-        type="checkbox"
-        .value=${value}
-      />
-      <label class=${classMap(this.theme.components.CheckBox.label)} for="data"
-        >${this.label?.literalString}</label
       >
-    </section>`;
+        <input
+          class=${classMap(this.theme.components.CheckBox.element)}
+          autocomplete="off"
+          @input=${(evt: Event) => {
+        if (!(evt.target instanceof HTMLInputElement)) {
+          return;
+        }
+
+        this.#setBoundValue(evt.target.checked ? "true" : "false");
+      }}
+          id="data"
+          type="checkbox"
+          .checked=${value}
+        />
+        <label class=${classMap(this.theme.components.CheckBox.label)} for="data"
+          >${extractStringValue(this.label, this.component, this.processor, this.surfaceId)}</label
+        >
+      </section>`;
   }
 
   render() {
-    if (this.value && typeof this.value === "object") {
-      if ("literalBoolean" in this.value && this.value.literalBoolean) {
-        return this.#renderField(this.value.literalBoolean);
-      } else if ("literal" in this.value && this.value.literal !== undefined) {
-        return this.#renderField(this.value.literal);
-      } else if (this.value && "path" in this.value && this.value.path) {
-        if (!this.processor || !this.component) {
-          return html`(no model)`;
-        }
-
-        const textValue = this.processor.getData(
-          this.component,
-          this.value.path,
-          this.surfaceId ?? A2uiMessageProcessor.DEFAULT_SURFACE_ID
-        );
-
-        if (textValue === null) {
-          return html`Invalid label`;
-        }
-
-        if (typeof textValue !== "boolean") {
-          return html`Invalid label`;
-        }
-
-        return this.#renderField(textValue);
-      }
-    }
-
-    return nothing;
+    const value = extractBooleanValue(this.value, this.component, this.processor, this.surfaceId);
+    return this.#renderField(value);
   }
 }
